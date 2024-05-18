@@ -5,13 +5,13 @@ path = "central-gitleaks.toml"
 
 [[rules]]
 description = "MongoDB Root Username in .env"
-regex = '''(?i)(^MONGO_INITDB_ROOT_USERNAME=).+'''
-tags = ["mongodb", "username"]
+regex = '''(?i)\b((MONGO_INITDB_ROOT_USERNAME=)(?i)[a-z0-9]{32})(?:['|\"|\n|\r|\s|\x60|;]|$)'''
+tags = ["mongodb_rootuser", "username"]
 
 [[rules]]
 description = "MongoDB Root Password in .env"
 regex = '''(?i)(^MONGO_INITDB_ROOT_PASSWORD=).+'''
-tags = ["mongodb", "password"]
+tags = ["mongodb_rootuser", "password"]
 
 [[rules]]
 description = "MongoDB URI in .env"
