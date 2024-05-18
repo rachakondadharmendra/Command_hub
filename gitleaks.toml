@@ -1,0 +1,20 @@
+title = "custom gitleaks config"
+[[rules]]
+description = "Generic Password"
+regex = '''(?i)(password|passwd|pwd)[=:].{5,}'''
+tags = ["key", "password"]
+
+[[rules]]
+description = "Generic Username"
+regex = '''(?i)(username|user|userid)[=:].{3,}'''
+tags = ["username"]
+
+[[rules]]
+description = "MongoDB URI"
+regex = '''(?i)(mongodb_uri|uri|url)[=:].{10,}'''
+tags = ["uri"]
+
+[[rules]]
+description = "Generic Secret"
+regex = '''(?i)(secret|token|key)[=:].{10,}'''
+tags = ["key", "token", "secret"]
