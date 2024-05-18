@@ -1,4 +1,7 @@
-title = "custom gitleaks config for .env file"
+title = "gitleaks config for .env file"
+
+[extend]
+path = "central-gitleaks.toml"
 
 [[rules]]
 description = "MongoDB Root Username in .env"
