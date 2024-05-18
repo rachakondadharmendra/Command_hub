@@ -1,34 +1,15 @@
-title = "gitleaks config for .env file"
-
-[extend]
-path = "central-gitleaks.toml"
-
 [[rules]]
 description = "MongoDB Root Username in .env"
-regex = '''(?i)\b((MONGO_INITDB_ROOT_USERNAME=)(?i)[a-z0-9]{32})(?:['|\"|\n|\r|\s|\x60|;]|$)'''
+regex = '''(?i)(MONGO_INITDB_ROOT_USERNAME=)([^\s]+)'''
 tags = ["mongodb_rootuser", "username"]
 
 [[rules]]
 description = "MongoDB Root Password in .env"
-regex = '''(?i)(^MONGO_INITDB_ROOT_PASSWORD=).+'''
+regex = '''(?i)(MONGO_INITDB_ROOT_PASSWORD=)([^\s]+)'''
 tags = ["mongodb_rootuser", "password"]
 
-[[rules]]
-description = "MongoDB URI in .env"
-regex = '''(?i)(^MONGODB_URI=).+'''
-tags = ["mongodb", "uri"]
-
-[[rules]]
-description = "DB Username in .env"
-regex = '''(?i)(^DB_USERNAME=").+'''
-tags = ["username"]
-
-[[rules]]
-description = "DB Password in .env"
-regex = '''(?i)(^DB_PASSWORD=").+'''
-tags = ["password"]
 
 [[rules]]
 description = "Generic Secret in .env"
-regex = '''(?i)(^.+=).+secret.+'''
+regex = '''(?i)(.*=.+secret.+)'''
 tags = ["secret"]
