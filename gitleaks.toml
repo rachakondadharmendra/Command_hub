@@ -1,20 +1,31 @@
-title = "custom gitleaks config"
-[[rules]]
-description = "Generic Password"
-regex = '''(?i)(password|passwd|pwd)[=:].{5,}'''
-tags = ["key", "password"]
+title = "custom gitleaks config for .env file"
 
 [[rules]]
-description = "Generic Username"
-regex = '''(?i)(username|user|userid)[=:].{3,}'''
+description = "MongoDB Root Username in .env"
+regex = '''(?i)(^MONGO_INITDB_ROOT_USERNAME=).+'''
+tags = ["mongodb", "username"]
+
+[[rules]]
+description = "MongoDB Root Password in .env"
+regex = '''(?i)(^MONGO_INITDB_ROOT_PASSWORD=).+'''
+tags = ["mongodb", "password"]
+
+[[rules]]
+description = "MongoDB URI in .env"
+regex = '''(?i)(^MONGODB_URI=).+'''
+tags = ["mongodb", "uri"]
+
+[[rules]]
+description = "DB Username in .env"
+regex = '''(?i)(^DB_USERNAME=").+'''
 tags = ["username"]
 
 [[rules]]
-description = "MongoDB URI"
-regex = '''(?i)(mongodb_uri|uri|url)[=:].{10,}'''
-tags = ["uri"]
+description = "DB Password in .env"
+regex = '''(?i)(^DB_PASSWORD=").+'''
+tags = ["password"]
 
 [[rules]]
-description = "Generic Secret"
-regex = '''(?i)(secret|token|key)[=:].{10,}'''
-tags = ["key", "token", "secret"]
+description = "Generic Secret in .env"
+regex = '''(?i)(^.+=).+secret.+'''
+tags = ["secret"]
